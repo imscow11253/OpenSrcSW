@@ -9,7 +9,7 @@ import javax.xml.transform.TransformerException;
 
 public class kuir {
 
-	public static void main(String[] args) throws ParserConfigurationException, TransformerException, IOException{
+	public static void main(String[] args) throws ParserConfigurationException, TransformerException, IOException, ClassNotFoundException{
 		// TODO Auto-generated method stub
 		
 		if (args[0].compareTo("-c") == 0) {
@@ -23,6 +23,15 @@ public class kuir {
 			
 			file.extractText(args[1]);
 			file.makeStructureOFXML();
+		}
+		else if (args[0].compareTo("-i") == 0) {
+			Indexer file = new Indexer();
+			
+			file.extractText(args[1]);
+			file.split();
+			file.makeHashmap();
+			file.postFile();
+			file.printFile();
 		}
 	}
 
