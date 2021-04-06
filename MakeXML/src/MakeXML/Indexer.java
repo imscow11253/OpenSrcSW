@@ -78,7 +78,7 @@ public class Indexer {
 					
 					int num = Collections.frequency(all, key);
 					
-					double tem = Double.parseDouble(str[1]) * Math.log10(5 / num); 
+					double tem = Double.parseDouble(str[1]) * Math.log(5 / num); 
 					double temp = Double.parseDouble(String.format("%.2f", tem));
 					
 					map.get(key).add((double)i);
@@ -88,7 +88,7 @@ public class Indexer {
 					List<Double> list = new ArrayList<Double>();
 					
 					int num = Collections.frequency(all, key);
-					double tem = (Double.parseDouble(str[1])) * (Math.log10(5 / num)); 
+					double tem = (Double.parseDouble(str[1])) * (Math.log(5 / num)); 
 					double temp = Double.parseDouble(String.format("%.2f", tem));
 					
 					list.add((double)i);
