@@ -20,6 +20,7 @@ public class searcher {
 	HashMap hashmap;
 	HashMap<String, Double> kkmaHash;
 	private List<String> contents = new ArrayList<String>(5);
+	double[] Sim = {0.0 ,0.0 ,0.0 ,0.0 ,0.0};
 	
 	void loadHashMap(String dir) throws IOException, ClassNotFoundException {
 		FileInputStream fileStream = new FileInputStream(dir);
@@ -43,16 +44,27 @@ public class searcher {
 		}		
 	}
 	
+	void InnerProduct() {
+		Iterator it = kkmaHash.keySet().iterator();
+		
+		while(it.hasNext()) {
+			String str = (String) it.next();
+			
+			if(hashmap.containsKey(str)) {
+				List<Double> list = (ArrayList<Double>)hashmap.get(str);
+				for(int j =0; j< list.size(); j=j+2) {
+					
+					int index = (int)Math.round((double)list.get(j));
+					Sim[index] += list.get(j+1) * kkmaHash.get(str);
+				}
+			}
+		}
+	}
+	
 	void calcSim() throws IOException {
-		double[] Sim = {0.0 ,0.0 ,0.0 ,0.0 ,0.0};
 		double r2=0.0;
 		double[] r1 = {0.0 ,0.0 ,0.0 ,0.0 ,0.0};
-//		List<Double> r1 = new ArrayList<Double>(kkmaHash.keySet().size());
-//		
-//		for(int i=0;i<kkmaHash.keySet().size();i++) {
-//			r1.add(0.0);
-//		}
-		
+
 		Iterator it = kkmaHash.keySet().iterator();
 		Iterator it2 = kkmaHash.keySet().iterator();
 		
@@ -72,7 +84,6 @@ public class searcher {
 				for(int j =0; j< list.size(); j=j+2) {
 					
 					int index = (int)Math.round((double)list.get(j));
-					Sim[index] += list.get(j+1) * kkmaHash.get(str);
 					r1[index] += list.get(j+1)*list.get(j+1);
 					//System.out.println(r1.get(index));
 				}
@@ -91,9 +102,6 @@ public class searcher {
 			}
 			System.out.println(Sim[i]);
 		}
-		
-		
-		
 		int[] arr= {0,1,2,3,4};
 		for(int i =0;i<4;i++) {
 			int index = i;

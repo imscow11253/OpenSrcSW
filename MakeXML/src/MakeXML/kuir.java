@@ -38,6 +38,7 @@ public class kuir {
 			
 			sear.loadHashMap(args[1]);
 			sear.makekkmaHash(args[3]);
+			sear.InnerProduct();
 			sear.calcSim();
 		}
 	}
