@@ -33,6 +33,13 @@ public class kuir {
 			file.postFile();
 			file.printFile();
 		}
+		else if (args[0].compareTo("-s") == 0) {
+			searcher sear = new searcher();
+			
+			sear.loadHashMap(args[1]);
+			sear.makekkmaHash(args[3]);
+			sear.calcSim();
+		}
 	}
 
 }
