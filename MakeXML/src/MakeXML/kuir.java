@@ -41,6 +41,9 @@ public class kuir {
 			sear.InnerProduct();
 			sear.calcSim();
 		}
+		else if (args[0].compareTo("-f") == 0) {
+			genSnippet r = new genSnippet(args[1]);
+		}
 	}
 
 }

@@ -118,7 +118,7 @@ public class searcher {
 			temp2 = arr[index];
 			arr[index] = arr[i];
 			arr[i] = temp2;
-		}
+		}	
 		for(int i =0; i<5; i++) {
 			org.jsoup.nodes.Document html = Jsoup.parse(new File("C:/Users/LG/Desktop/SimpleIR/MakeXML/src/MakeXML/makeCollection.xml"), "UTF-8");
 			
